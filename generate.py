@@ -9,9 +9,6 @@ OUTPUT_FILE = "visualizations.html"
 
 def main():
     report_images = glob.glob(path.join("results", "*", "*", "*.png"), recursive=True)
-
-    
-
     doc, tag, text = Doc().tagtext()
 
     with tag('html'):
@@ -19,6 +16,12 @@ def main():
             for image in report_images:
                 with tag('p'):
                     doc.stag('img', src=image)
+                with tag('p'):
+                    with tag('a', href=image.replace(".png", ".txt"), target="_blank"):
+                        text('Open test log')
+                with tag('p'):
+                    with tag('a', href=image.replace(".png", ".json"), target="_blank"):
+                        text('Open character json')
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write(doc.getvalue())
