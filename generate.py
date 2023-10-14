@@ -1,28 +1,35 @@
 
 import glob
 import json
-from os import path
+from os import path, listdir
 from yattag import Doc
 
 OUTPUT_FILE = "visualizations.html"
 
 
 def main():
-    report_images = glob.glob(path.join("results", "*", "*", "*.png"), recursive=True)
     doc, tag, text = Doc().tagtext()
+
+    tests = listdir('results')
 
     with tag('html'):
         with tag('body'):
-            for image in report_images:
+            for test in tests:
                 with tag('details'):
                     with tag('summary'):
-                        text('Open character json')
+                        text(test)
                     with tag('p'):
-                        doc.stag('img', src=image)
-                        with tag('a', href=image.replace(".png", ".txt"), target="_blank"):
-                            text('Open test log')
-                        with tag('a', href=image.replace(".png", ".json"), target="_blank"):
-                            text('Open character json')
+                        models = listdir(path.join('results', test))
+                        for model in models:
+                            with tag('details'):
+                                with tag('summary'):
+                                    text(model)
+                                with tag('p'):
+                                    report_images = glob.glob(path.join("results", "test", "model", "*.png"), recursive=True)
+                                    for image in report_images:
+                                        doc.stag('img', src=image)
+                                        with tag('a', href=image.replace(".png", ".txt"), target="_blank"):
+                                            text('Open test log')
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write(doc.getvalue())
