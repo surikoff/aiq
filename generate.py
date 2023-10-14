@@ -25,7 +25,7 @@ def main():
                                 with tag('summary'):
                                     text(model)
                                 with tag('p'):
-                                    report_images = glob.glob(path.join("results", "test", "model", "*.png"), recursive=True)
+                                    report_images = glob.glob(path.join("results", test, model, "*.png"), recursive=True)
                                     for image in report_images:
                                         doc.stag('img', src=image)
                                         with tag('a', href=image.replace(".png", ".txt"), target="_blank"):
