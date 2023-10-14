@@ -21,7 +21,7 @@ def main():
                     with tag('p'):
                         models = listdir(path.join('results', test))
                         for model in models:
-                            with tag('details'):
+                            with tag('details', style="margin-left: 40px"):
                                 with tag('summary'):
                                     text(model)
                                 with tag('p'):
