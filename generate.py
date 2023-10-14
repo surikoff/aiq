@@ -14,14 +14,15 @@ def main():
     with tag('html'):
         with tag('body'):
             for image in report_images:
-                with tag('p'):
-                    doc.stag('img', src=image)
-                with tag('p'):
-                    with tag('a', href=image.replace(".png", ".txt"), target="_blank"):
-                        text('Open test log')
-                with tag('p'):
-                    with tag('a', href=image.replace(".png", ".json"), target="_blank"):
+                with tag('details'):
+                    with tag('summary'):
                         text('Open character json')
+                    with tag('p'):
+                        doc.stag('img', src=image)
+                        with tag('a', href=image.replace(".png", ".txt"), target="_blank"):
+                            text('Open test log')
+                        with tag('a', href=image.replace(".png", ".json"), target="_blank"):
+                            text('Open character json')
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write(doc.getvalue())
