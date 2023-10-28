@@ -22,7 +22,7 @@ def main():
                     with tag('p'):
                         models = listdir(path.join('results', test))
                         for model in models:
-                            
+                            doc.stag('img', src=path.join('results', test, f"{model}_scores.png"))
                             with tag('details', style="margin-left: 40px"):
                                 with tag('summary'):
                                     text(model)
