@@ -4,7 +4,7 @@ import json
 from os import path, listdir, scandir
 from yattag import Doc
 
-OUTPUT_FILE = "visualizations.html"
+OUTPUT_FILE = "character_tests.html"
 
 
 def main():
@@ -12,7 +12,7 @@ def main():
 
     tests = listdir('results')
 
-    with tag('html', manifest="manifest.appcache"):
+    with tag('html'):
         with tag('body'):
             for test in tests:
                 with tag('details'):
