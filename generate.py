@@ -12,7 +12,7 @@ def main():
 
     tests = listdir('results')
 
-    with tag('html'):
+    with tag('html', manifest="manifest.appcache"):
         with tag('body'):
             for test in tests:
                 with tag('details'):
@@ -26,6 +26,7 @@ def main():
                                 with tag('summary'):
                                     text(model)
                                 with tag('p'):
+                                    doc.stag('img', src=path.join('results', test, f"{model}_scores.png"))
                                     report_images = glob.glob(path.join("results", test, model, "*.png"), recursive=True)
                                     for image in report_images:
                                         doc.stag('img', src=image)
