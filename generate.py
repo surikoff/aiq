@@ -21,14 +21,12 @@ def main():
                     with tag('p'):
                         doc.stag('img', src=path.join('results', test, "models_stat.png"))
                         models = [path.split(entry.path)[-1] for entry in scandir(path.join('results', test)) if entry.is_dir()]
-                        # models = listdir(path.join('results', test))
-                        print(models)
                         for model in models:
                             with tag('details', style="margin-left: 40px"):
                                 with tag('summary'):
                                     text(model)
-                                with tag('p'):
                                     doc.stag('img', src=path.join('results', test, f"{model}_scores.png"))
+                                with tag('p'):
                                     report_images = glob.glob(path.join("results", test, model, "*.png"), recursive=True)
                                     for image in report_images:
                                         doc.stag('img', src=image)
