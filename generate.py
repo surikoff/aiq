@@ -15,18 +15,18 @@ def main():
     with tag('html'):
         with tag('body'):
             for test in tests:
-                doc.stag('img', src=path.join('results', test, "models_stat.png"))
                 with tag('details'):
                     with tag('summary'):
                         text(test)
                     with tag('p'):
+                        doc.stag('img', src=path.join('results', test, "models_stat.png"))
                         models = listdir(path.join('results', test))
                         for model in models:
-                            doc.stag('img', src=path.join('results', test, f"{model}_scores.png"))
                             with tag('details', style="margin-left: 40px"):
                                 with tag('summary'):
                                     text(model)
                                 with tag('p'):
+                                    doc.stag('img', src=path.join('results', test, f"{model}_scores.png"))
                                     report_images = glob.glob(path.join("results", test, model, "*.png"), recursive=True)
                                     for image in report_images:
                                         doc.stag('img', src=image)
