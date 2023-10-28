@@ -1,7 +1,7 @@
 
 import glob
 import json
-from os import path, listdir
+from os import path, listdir, scandir
 from yattag import Doc
 
 OUTPUT_FILE = "visualizations.html"
@@ -20,7 +20,9 @@ def main():
                         text(test)
                     with tag('p'):
                         doc.stag('img', src=path.join('results', test, "models_stat.png"))
-                        models = listdir(path.join('results', test))
+                        models = [path.split(entry.path)[-1] for entry in scandir(path.join('results', test)) if entry.is_dir()]
+                        # models = listdir(path.join('results', test))
+                        print(models)
                         for model in models:
                             with tag('details', style="margin-left: 40px"):
                                 with tag('summary'):
