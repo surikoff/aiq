@@ -3,6 +3,7 @@ import glob
 import json
 from os import path, listdir, scandir
 from yattag import Doc
+from random import randint
 
 OUTPUT_FILE = "character_tests_v2.html"
 
@@ -26,10 +27,10 @@ def main():
                                 with tag('summary'):
                                     text(model)
                                 with tag('p'):
-                                    doc.stag('img', src=path.join('results', test, f"{model}_scores.png"))
+                                    doc.stag('img', src=path.join('results', test, f"{model}_scores.png?{randint(0, 1000)}"))
                                     report_images = glob.glob(path.join("results", test, model, "*.png"), recursive=True)
                                     for image in report_images:
-                                        doc.stag('img', src=image)
+                                        doc.stag('img', src=f"{image}?{randint(0, 1000)}")
 
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
