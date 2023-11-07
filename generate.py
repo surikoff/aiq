@@ -20,7 +20,7 @@ def main():
                     with tag('summary'):
                         text(test)
                     with tag('p'):
-                        doc.stag('img', src=path.join('results', test, "models_stat.png"))
+                        doc.stag('img', src=path.join('results', test, f"models_stat.png?{randint(0, 1000)}"))
                         models = [path.split(entry.path)[-1] for entry in scandir(path.join('results', test)) if entry.is_dir()]
                         for model in models:
                             with tag('details', style="margin-left: 40px"):
