@@ -4,7 +4,7 @@ import json
 from os import path, listdir, scandir
 from yattag import Doc
 
-OUTPUT_FILE = "character_tests.html"
+OUTPUT_FILE = "character_tests_v2.html"
 
 
 def main():
