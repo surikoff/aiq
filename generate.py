@@ -5,7 +5,7 @@ from os import path, listdir, scandir
 from yattag import Doc
 from random import randint
 
-OUTPUT_FILE = "character_tests_v2.html"
+OUTPUT_FILE = "character_tests.html"
 
 
 def main():
