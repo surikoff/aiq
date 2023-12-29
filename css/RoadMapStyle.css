@@ -7,8 +7,8 @@
   .main-timeline::after {
     content: "";
     position: absolute;
-    width: 6px;
-    background-color: #939597;
+    width: 10px;
+    background-color: #c5eebd;
     top: 0;
     bottom: 0;
     left: 50%;
@@ -26,13 +26,13 @@
   .timeline::after {
     content: "";
     position: absolute;
-    width: 25px;
+    width: 50px;
     height: 25px;
     right: -13px;
-    background-color: #939597;
-    border: 5px solid #f5df4d;
+    background-color: #6DD46A;
+    border: 5px solid #6DD46A;
     top: 15px;
-    border-radius: 50%;
+    border-radius: 10%;
     z-index: 1;
   }
   
