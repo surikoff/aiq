@@ -10929,7 +10929,7 @@ footer.footer {
   }
 }
 
-@media (max-width: 768rpx) {
+@media (max-width: 768px) {
   .collapse-768px {
     display:none;
   }
