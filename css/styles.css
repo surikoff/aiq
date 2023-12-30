@@ -10922,8 +10922,20 @@ footer.footer {
   vertical-align: middle;  
 }
 
+
 @media (max-width: 525px) {
   .navbar-inline-list-menu {
+    display:none;
+  }
+}
+
+@media (max-width: 768rpx) {
+  .collapse-768px {
+    display:none;
+  }
+}
+@media (max-width: 991px) {
+  .collapse-991px {
     display:none;
   }
 }
