@@ -23,7 +23,7 @@ def main():
                     new_file_name = slugify(file_name)
                     print(file_name)
                     os.rename(f"graphs/{chart}", f"graphs/{new_file_name}.png")
-                    doc.stag('img', src=path.join('graphs', f"{new_file_name}.png?{randint(0, 1000)}"))
+                    doc.stag('img', src=path.join('graphs', f"{new_file_name}.png?{randint(0, 10000)}"))
 
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
