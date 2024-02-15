@@ -15,9 +15,12 @@ def main():
 
     with tag('html'):
         with tag('body'):
-            for chart in charts:
-                with tag('p'):
-                    doc.stag('img', src=path.join('graphs_en', f"{chart}?{randint(0, 10000)}"))
+            for chart in sorted(charts):
+                with tag('details'):
+                    with tag('summary'):
+                        text(chart.split(".")[0])
+                    with tag('p'):
+                        doc.stag('img', src=path.join('graphs_en', f"{chart}?{randint(0, 10000)}"))
 
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
