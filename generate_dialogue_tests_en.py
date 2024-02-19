@@ -11,16 +11,19 @@ OUTPUT_FILE = "dialogue_tests_en.html"
 def main():
     doc, tag, text = Doc().tagtext()
 
-    charts = listdir('graphs_en')
+    charts = [entry.path for entry in scandir('graphs_en') if not entry.is_dir()]
+    dirs = [entry.path for entry in scandir('graphs_en') if entry.is_dir()]
 
     with tag('html'):
         with tag('body'):
-            for chart in sorted(charts):
+            for chart, dir in zip(sorted(charts), sorted(dirs)):
                 with tag('details'):
                     with tag('summary'):
                         text(chart.split(".")[0])
                     with tag('p'):
-                        doc.stag('img', src=path.join('graphs_en', f"{chart}?{randint(0, 10000)}"))
+                        doc.stag('img', src=f"{chart}?{randint(0, 10000)}")
+                        for character in [entry.path for entry in scandir(dir) if not entry.is_dir()]:
+                            doc.stag('img', src=f"{character}?{randint(0, 10000)}")
 
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
