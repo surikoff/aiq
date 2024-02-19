@@ -19,11 +19,15 @@ def main():
             for chart, dir in zip(sorted(charts), sorted(dirs)):
                 with tag('details'):
                     with tag('summary'):
-                        text(chart.split(".")[0])
+                        text(dir.split("/")[1])
                     with tag('p'):
                         doc.stag('img', src=f"{chart}?{randint(0, 10000)}")
                         for character in [entry.path for entry in scandir(dir) if not entry.is_dir()]:
-                            doc.stag('img', src=f"{character}?{randint(0, 10000)}")
+                            with tag('details'):
+                                with tag('summary'):
+                                    text(character.split("/")[1] + ": " + character.split("/")[2].split(".")[0])
+                                with tag('p'):
+                                    doc.stag('img', src=f"{character}?{randint(0, 10000)}")
 
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
